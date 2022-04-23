@@ -1,0 +1,144 @@
+{% extends 'dashboard/index.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h6 class="h3 mb-0 text-gray-800">Manage Members</h6>
+
+</div>
+{% if not member %}
+<form method="POST" class="form-group">
+    {% csrf_token %}
+
+    <div>
+        <h5 class="m-0 font-weight-bold text-primary">SK Chairperson</h5>
+    </div>
+    <div class="form-floating mb-3">
+        <label for="floatingInput">Chairperson</label>
+        {{ form.chairman | as_crispy_field }}
+    </div>
+    <div>
+        <h5 class="m-0 font-weight-bold text-primary">Members</h5>
+    </div>
+    <div class="form-floating">
+        <label for="floatingPassword">Kagawad #1</label>
+        {{ form.kagawad1 | as_crispy_field }}
+    </div>
+    <div class="form-floating">
+        <label for="floatingPassword">Kagawad #2</label>
+        {{ form.kagawad2 | as_crispy_field }}
+    </div>
+    <div class="form-floating">
+        <label for="floatingPassword">Kagawad #3</label>
+        {{ form.kagawad3 | as_crispy_field }}
+    </div>
+    <div class="form-floating">
+        <label for="floatingPassword">Kagawad #4</label>
+        {{ form.kagawad4 | as_crispy_field }}
+    </div>
+    <div class="form-floating">
+        <label for="floatingPassword">Kagawad #5</label>
+        {{ form.kagawad5 | as_crispy_field }}
+    </div>
+    <div class="form-floating">
+        <label for="floatingPassword">Kagawad #6</label>
+        {{ form.kagawad6 | as_crispy_field }}
+    </div>
+    <div class="form-floating">
+        <label for="floatingPassword">Kagawad #7</label>
+        {{ form.kagawad7 | as_crispy_field }}
+    </div>
+    <br>
+    <hr>
+    <div class="form-floating">
+        <label for="floatingPassword">Treasurer</label>
+        {{ form.treasurer | as_crispy_field }}
+    </div>
+    <div class="form-floating">
+        <label for="floatingPassword">Secretary</label>
+        {{ form.secretary | as_crispy_field }}
+    </div>     
+    <br>
+    <div style="display: flex; justify-content: center; align-items: center">
+        <button type="submit" class="btn btn-primary" style="margin: 0px 10px 0px 10px">Save</button>
+        <button type="reset" class="btn btn-secondary" style="margin: 0px 10px 0px 10px">Reset</button>
+    
+    </div>
+</form>
+{% else %}
+{% for mem in member %}
+<div class="container">
+<ol class="list-group list-group-numbered">
+    <li class="list-group-item d-flex justify-content-center">
+        <div>
+            <div class="fw-bold">{{mem.chairman}}</div>
+            <small class="d-flex justify-content-center"> Chairperson</small>
+        </div>
+    </li>
+    <hr>
+    <li class="list-group-item d-flex justify-content-center">
+        <div>
+            <div class="fs-4">{{mem.kagawad1}}</div>
+            <small class="d-flex justify-content-center">Kagawad</small>
+        </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-center">
+        <div>
+            <div class="fw-bold">{{mem.kagawad2}}</div>
+            <small class="d-flex justify-content-center">Kagawad</small>
+        </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-center">
+        <div>
+            <div class="fw-bold">{{mem.kagawad3}}</div>
+            <small class="d-flex justify-content-center">Kagawad</small>
+        </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-center">
+        <div>
+            <div class="fw-bold">{{mem.kagawad4}}</div>
+            <small class="d-flex justify-content-center">Kagawad</small>
+        </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-center">
+        <div>
+            <div class="fw-bold">{{mem.kagawad5}}</div>
+            <small class="d-flex justify-content-center">Kagawad</small>
+        </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-center">
+        <div>
+            <div class="fw-bold">{{mem.kagawad6}}</div>
+            <small class="d-flex justify-content-center">Kagawad</small>
+        </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-center">
+        <div>
+            <div class="fw-bold">{{mem.kagawad7}}</div>
+            <small class="d-flex justify-content-center">Kagawad</small>
+        </div>
+    </li>
+    <hr>
+    <li class="list-group-item d-flex justify-content-center">
+        <div>
+            <div class="fw-bold">{{mem.treasurer}}</div>
+            <small class="d-flex justify-content-center">Treasurer</small>
+        </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-center">
+        <div>
+            <div class="fw-bold">{{mem.secretary}}</div>
+            <small class="d-flex justify-content-center">Secretary</small>
+        </div>
+    </li>
+</ol>
+<br>
+<a href="{% url 'edit_member' %}" class="btn btn-primary">Edit</a>
+</div>
+{% endfor %}
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'dashboard/index.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h6 class="h3 mb-0 text-gray-800">Manage Members</h6>
+
+</div>
+
+<form method="POST" class="form-group">
+    {% csrf_token %}
+
+    <div>
+        <h5 class="m-0 font-weight-bold text-primary">SK Chairman</h5>
+    </div>
+    <div class="form-floating mb-3">
+        <label for="floatingInput">Chairman</label>
+        {{ form.chairman | as_crispy_field }}
+    </div>
+    <div>
+        <h5 class="m-0 font-weight-bold text-primary">Members</h5>
+    </div>
+    <div class="form-floating">
+        <label for="floatingPassword">Kagawad #1</label>
+        {{ form.kagawad1 | as_crispy_field }}
+    </div>
+    <div class="form-floating">
+        <label for="floatingPassword">Kagawad #2</label>
+        {{ form.kagawad2 | as_crispy_field }}
+    </div>
+    <div class="form-floating">
+        <label for="floatingPassword">Kagawad #3</label>
+        {{ form.kagawad3 | as_crispy_field }}
+    </div>
+    <div class="form-floating">
+        <label for="floatingPassword">Kagawad #4</label>
+        {{ form.kagawad4 | as_crispy_field }}
+    </div>
+    <div class="form-floating">
+        <label for="floatingPassword">Kagawad #5</label>
+        {{ form.kagawad5 | as_crispy_field }}
+    </div>
+    <div class="form-floating">
+        <label for="floatingPassword">Kagawad #6</label>
+        {{ form.kagawad6 | as_crispy_field }}
+    </div>
+    <div class="form-floating">
+        <label for="floatingPassword">Kagawad #7</label>
+        {{ form.kagawad7 | as_crispy_field }}
+    </div>
+    <br>
+    <hr>
+    <div class="form-floating">
+        <label for="floatingPassword">Treasurer</label>
+        {{ form.treasurer | as_crispy_field }}
+    </div>
+    <div class="form-floating">
+        <label for="floatingPassword">Secretary</label>
+        {{ form.secretary | as_crispy_field }}
+    </div>
+    <br>
+    <div style="display: flex; justify-content: center; align-items: center">
+        <button type="submit" class="btn btn-primary" style="margin: 0px 10px 0px 10px">Save</button>
+    </div>
+</form>
+
+
+{% endblock %}
